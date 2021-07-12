@@ -2,7 +2,6 @@
 title: 'Designing Target ID on a Aerial UAV System Part II'
 author: Mike Sutherland
 date: 2021-05-12
-draft: true
 tags: ['uav']
 ---
 
