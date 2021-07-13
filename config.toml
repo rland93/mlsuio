@@ -1,7 +1,7 @@
 baseURL = "http://mlsu.io"
 languageCode = "en-us"
 title = "mslu.io"
-theme = 'smol'
+theme = "smol"
 
 [taxonomies]
 category = "tags"
