@@ -1,0 +1,259 @@
+@font-face {
+    font-family: 'Public Sans';
+    src: url(/publicsans.ttf);
+}
+@font-face {
+    font-family: 'Public Sans';
+    src: url(/publicsans_italic.ttf);
+    font-style:italic;
+}
+main, footer, .related {
+    border-top: 1px black solid;
+}
+.related{
+    background-color:lightgrey;
+    margin:0;
+    padding:1em;
+    font-size:smaller;
+}
+sup {
+    line-height:0;
+    vertical-align: super;
+}
+.subtitle {
+    font-style: italic;
+    color:gold;
+    display:block;
+    float:right;
+}
+/* header text */
+.fancytext{
+    font-size: 50pt;
+    letter-spacing: 8pt;
+    color: gold;
+    font-family: 'Public Sans', Verdana, sans-serif;
+    font-weight:900;
+    text-shadow:
+        2px 2px 0px blue,
+        3px 3px 0px #FFA69E,
+        6px 6px 0px #FAF3DD,
+        12px 12px 0px #B8F2E6,
+        18px 18px 0px #99cbd3,
+        24px 22px 0px #77abd3;
+}
+nav {
+    clear:both;
+    padding:.1em 0em;
+}
+.navlink {
+    padding: 0px 1em;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Public Sans', sans-serif;
+    font-weight: bold;
+}
+ul.tags{
+    font-style:italic;
+    padding:0;
+}
+ul.tags li {
+    display:inline-block;
+    padding: 3pt;
+    list-style: none;
+}
+ul.tags li a {
+    padding:6pt 8pt;
+    background-color: linen;
+    color:blue;
+    font-family: 'Public Sans', 'Trebuchet', sans-serif;
+}
+
+body {
+    max-width: 52em;
+    margin: 3em auto;
+    padding: 0;
+    font-family: 'Trebuchet', sans-serif;
+    color: black;
+    background-color: rgb(241, 241, 241);
+
+}
+h1.maintitle {
+    color:gold;
+    font-size: 50pt;
+    font-weight:1000;
+    letter-spacing: 10pt;
+    line-height:0em;
+}
+h1 {
+    color: black;
+    font-size: 32pt;
+    font-weight: 400;
+}
+a {
+    color: blue;
+    text-decoration:none;
+}
+p>code, pre {
+    background:rgb(235, 235, 235);
+    color:black;
+    font-family: monospace;
+}
+p.author {
+    font-family: "Public Sans", Verdana, Tahoma, sans-serif;
+    text-transform:uppercase;
+    color: grey;
+    margin:0;
+    text-align: right;
+    float:right;
+    letter-spacing: 1pt;
+    line-height:16pt;
+}
+p>code {
+    padding: 3pt;
+}
+
+pre {
+    padding: 24pt;
+    overflow-x:auto;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+figcaption {
+    color: #888;
+    font-size: 20pt/1.5;
+    text-align: center;
+}
+
+figure {
+    margin: auto;
+    width:70%;
+}
+header {
+    background: blue;
+    color: white;
+    padding: 1em;
+}
+title {
+    background:white;
+    border-bottom:1px solid gold;
+}
+header a{
+    color:white;
+    font-weight:bold;
+}
+header h1 {
+    color: white;
+}
+main {
+    padding:2em 1em;
+    background-color: white;
+}
+footer {
+    background: lightgray;
+    padding: 1em;
+}
+footer a {
+    margin-right:1em;
+}
+.sidefigbox {
+    display:flex;
+    flex-direction: row;
+    flex-basis: auto;
+    border-top: 1px dashed black;
+    border-bottom: 1px dashed black;
+}
+.sidecaption {
+    margin:0pt;
+    padding:12pt;
+    width:40%;
+    
+}
+.sidecaption p{
+    font-family:"Public Sans";
+    font-size:smaller;
+}
+
+.sidefig {
+    margin:0pt;
+    float:right;
+    padding:12pt;
+}
+.sidefig p {
+    margin:0;
+    padding:0;
+}
+
+
+@media only screen and (max-width:600px) {
+    h1 {font-size:20pt;}
+    h2 {font-size:16pt;}
+    h3 {font-size:14pt;}
+    article {
+        font-size:12pt;
+    }
+    header h1.fancytext{
+        font-size: 34pt;
+    }
+    nav .navlink {
+        padding:0em .1em;
+    }
+    footer {
+        font-size:12pt;
+    }
+    html {
+        padding:0;
+    }
+}
+
+
+@media screen {
+    body {
+        font-size: 16pt;
+        line-height:28pt;
+    }
+}
+
+@media print {
+    body {
+        font-size:10pt;
+        line-height:18pt;
+        padding:0.75in;
+    }
+    article, body {
+        background: white;
+        color:#333;
+    }
+    article h1 {
+        font-size:24px;
+        line-height:36px;
+    }
+    header {
+        background:whitesmoke;
+    }
+    header h1.fancytext {
+        color: black;
+    }
+    header .subtitle {
+        color: blue;
+    }
+    footer, section.related {
+        background: whitesmoke;
+    }
+    a {
+        color:blue;
+    }
+    nav a.navlink {
+        color:blue;
+    }
+}
