@@ -1,4 +1,4 @@
-baseURL = "http://mlsu.io"
+baseURL = "https://mlsu.io"
 languageCode = "en-us"
 title = "mslu.io"
 theme = "smol"
