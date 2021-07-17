@@ -1,6 +1,6 @@
 ---
-title: "Writing a Path Planner"
-date: 2021-07-14
+title: "Writing a Path Planner, Part 1: Polygons"
+date: 2021-07-15
 tags: ['uav','pathplanning']
 draft: False
 author: Mike Sutherland
@@ -24,7 +24,7 @@ So, actually, we have a lot of topological constraints on the world that we're t
 
 ### Variability
 
-We also want to be able to tweak the worlds we generate to our liking. Our algorithm must be parameterizable. We focus on a couple of parameters:
+We also want to be able to tweak the worlds we generate to our liking. Our algorithm must be parameteriz-able. We focus on a couple of parameters:
 
 + How non-convex our world is (it's "jaggedness")
 + How complex our world is (i.e. how many boundary points there are)
@@ -32,7 +32,7 @@ We also want to be able to tweak the worlds we generate to our liking. Our algor
 
 ### Interestingness
 
-We want to create worlds that are "interesting" in the same way that real-world bounded spaces are interesting. This is a surprisingly challening task.
+We want to create worlds that are "interesting" in the same way that real-world bounded spaces are interesting. This is a surprisingly challenging task.
 
 To see what I mean by interestingness, consider the following simple method of generating non-convex polygons. We build set of points in radial coordinates \\( [r, \theta] \\) . For each point, take a random value between \\( (0, 2 \pi)\\)  and add it to \\( \theta\\) . Set \\( r\\)  to be a random value in some interval \\( (R_{\text{inner}},R_{\text{outer}})\\) . The list of points is wrapped around a circle and forms a polygon that satisfies all of our constraints above:
 
@@ -120,6 +120,41 @@ The algorithm attempts to remove the most "slivery" triangles first (notice, tha
 ## Getting Boundaries
 
 Okay, so now we have this shape. How can we get the boundaries of the obstacle and the outer shape?
+
+Remember those outer points? If a node of the voronoi graph has degree 2 or 1, we know that it is on the outer boundary (interior tris have tris on all three sides, hence degree 3). We further can identify which vertices on those tris lie outside. Thus, we can enumerate all outer edges of the polygon. With this collection of edges, we can perform a depth-first search to obtain the boundaries in their proper order. 
+
+There's another bit of information we can extract. There is some minimal vertex in our shape. Therefore, we can sort all of the points by their x (or y) values, find that minimum vertex. The collection of edges to which that vertex belongs is the outer edge, and the other collections of edges are necessarily interior holes.
+
+With our depth-first search of edges, we have almost completely described the structure of the polygon. The final touch is to orient each collection. We orient the outer boundary clockwise. In order to do this, we exploit a property of closed polygons. The algorithm proceeds like so:
+
+Orientation Algorithm:
+```
+orientation = 0
+for v in vertices:
+   orientation += cross( v_prev, v, v_next )
+```
+
+Here, we introduce the "orientation" of a 2-d shape. If the sum of the interior angles of the shape is positive, the shape is oriented "clockwise;" if negative, then the shape is oriented "counterclockwise". There's a famous identity of vectors in 3-d space:
+
+\\[a \times b = |a| |b| \sin{(\theta)}\\]
+
+That the sign of the cross product of two vectors \\(a\\) and \\(b\\) tells us the angle between them. 
+
+![cross product orientation](/img/path-planner/orient.jpg)
+
+So, we can go through the list of edges, compute the sum of their cross products, and if that sum is positive, the boundary is oriented clockwise; if it is negative, the boundary is oriented clockwise.
+
+From there, we can orient the boundary properly: if it contains that x-minimum point, it's the outer boundary, and so we orient it clockwise; if it doesn't contain that point, it's an obstacle, so we orient it counter clockwise.
+
+Now, we have our shape. Its boundaries are composed of a list-of-lists of points, the orientation of which tells us whether they are outer or inner boundaries. It is "interesting" in a way that we can parameterize to our liking: more points means a more complex shape, more removals means a more divoted shape, and the distribution of points gives us a general idea of the overall structure of the boundary. We made sure that it wasn't possible for any "degenerate" shapes to be generated. And our shapes can be as variable as any random distribution of points. 
+
+There is one more step to this process. Rather than working with lists of points, we work with an easier data-structure that lets us encode the information we have found about edges and vertices. Under the hood, it's a [map](https://en.wikipedia.org/wiki/Associative_array); in python-land, it's a [`networkx`](https://networkx.org/) graph. Each vertex of our newly-formed polygon gets an index, which identifies it as a unique node on the graph. Then, we store its actual location in an array as a value in the map. We can add any additional information about the point (like its inner/outer status, GPS coordinate, etc.) as a value.
+
+Our shape, then, takes its final form:
+
+![polygon graph](/img/path-planner/5_polygon_graph.png)
+
+Looking good!
 
 ---
 &dagger; [Code from StackOverflow answers is MIT, right...?](/img/path-planner/comic.jpg)
