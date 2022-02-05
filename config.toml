@@ -8,39 +8,44 @@ category = "tags"
 
 # Parameters
 [params]
-    subtitle = "mike's internet home"
-    dateFmt = "Jan 2006"
+subtitle = "mike's internet home"
+dateFmt = "Jan 2006"
 
 [markup]
-  [markup.goldmark]
-    [markup.goldmark.renderer]
-      unsafe = true
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true
 
 # Header
 [menu]
-  [[menu.main]]
-        identifier = 'info'
-        name = 'info'
-        url = '/info/'
-        weight= 1
-  [[menu.main]]
-        identifier = "posts"
-        name = "posts"
-        url = "/posts/"
-        weight = 2
+[[menu.main]]
+identifier = 'info'
+name = 'info'
+url = '/info/'
+weight = 1
+[[menu.main]]
+identifier = "posts"
+name = "posts"
+url = "/posts/"
+weight = 2
+[[menu.main]]
+identifier = "on wikipedia"
+name = "on wikipedia"
+url = "/on-wikipedia/"
+weight = 3
 
-  [[menu.main]]
-        identifier = "tags"
-        name = "categories"
-        url = "/tags/"
-        weight = 4
+[[menu.main]]
+identifier = "tags"
+name = "categories"
+url = "/tags/"
+weight = 4
 
 # Footer
-  [[menu.footer]]
-        name = 'home'
-        url = '/'
-        weight = 1
-  [[menu.footer]]
-        name = "github"
-        url = "https://github.com/rland93"
-        weight = 2 
+[[menu.footer]]
+name = 'home'
+url = '/'
+weight = 1
+[[menu.footer]]
+name = "github"
+url = "https://github.com/rland93"
+weight = 2
