@@ -1,5 +1,5 @@
 ---
-title: 'Designing Target ID on a Aerial UAV System, Part I'
+title: 'Target ID on a UAV with Deep Learning: Mission Requirements'
 author: Mike Sutherland
 date: 2021-07-14
 draft: False

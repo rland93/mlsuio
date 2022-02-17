@@ -1,5 +1,5 @@
 ---
-title: "Writing a Path Planner, Part 1: Polygons"
+title: "Generating Random, Interesting, Non-Convex Polygons"
 date: 2021-07-15
 tags: ['uav','pathplanning']
 draft: False

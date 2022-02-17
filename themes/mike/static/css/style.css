@@ -60,6 +60,12 @@ a:active {
     text-align: right;
 }
 
+.floatleft {
+    float: left;
+    display: inline-block;
+    height: 100%;
+}
+
 .postinfo * {
     font-style: italic;
 }

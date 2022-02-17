@@ -45,6 +45,11 @@ identifier = "tags"
 name = "categories"
 url = "/tags/"
 weight = 4
+[[menu.main]]
+identifier = "project ideas"
+name = "project ideas"
+url = "/side-projects/"
+weight = 5
 
 # Footer
 [[menu.footer]]
