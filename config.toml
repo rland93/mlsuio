@@ -1,7 +1,7 @@
 baseURL = "https://mlsu.io"
 languageCode = "en-us"
 title = "mslu.io"
-theme = "smol"
+theme = "mike"
 
 [taxonomies]
 category = "tags"
@@ -19,20 +19,26 @@ unsafe = true
 # Header
 [menu]
 [[menu.main]]
+identifier = 'home'
+name = 'home'
+url = '/'
+weight = 1
+
+[[menu.main]]
 identifier = 'info'
 name = 'info'
 url = '/info/'
-weight = 1
+weight = 2
 [[menu.main]]
 identifier = "posts"
 name = "posts"
 url = "/posts/"
-weight = 2
-[[menu.main]]
-identifier = "on wikipedia"
-name = "on wikipedia"
-url = "/on-wikipedia/"
 weight = 3
+# [[menu.main]]
+# identifier = "on wikipedia"
+# name = "on wikipedia"
+# url = "/on-wikipedia/"
+# weight = 3
 
 [[menu.main]]
 identifier = "tags"
@@ -45,6 +51,7 @@ weight = 4
 name = 'home'
 url = '/'
 weight = 1
+
 [[menu.footer]]
 name = "github"
 url = "https://github.com/rland93"

@@ -1,0 +1,13 @@
+<header>
+	<a class="nounderline" href="{{ .Site.BaseURL }}">
+		<h1 class="special">{{ .Site.Title }}</h1>
+	</a>
+	<div class='subtitle'>{{ .Site.Params.subtitle }}</div>
+	<nav>
+		{{ with .Site.Menus.main }}
+		{{ range . }}
+		<a class='navlink' href="{{ .URL | relURL }}">{{ .Name }}</a>
+		{{ end }}
+	</nav>
+	{{ end }}
+</header>

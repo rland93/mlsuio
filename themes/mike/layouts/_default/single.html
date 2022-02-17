@@ -1,0 +1,20 @@
+{{ define "main" }}
+<main>
+	<article>
+		<h1 class="posttitle">{{ .Title }}</h1>
+		<div class="postinfo">
+			<p class='author'>Author: {{ .Params.author }}</p>
+			<time class="postinfotime">{{ .Date.Format (default "2006-01-02 15:04:05" .Site.Params.dateFmt) }}</time>
+			<ul class='postinfotags'>
+				{{ range .Params.tags }}
+				<li><a href="{{ " /tags/" | relLangURL }}{{ . | urlize }}">{{ . }}</a></li>
+				{{ end }}
+			</ul>
+		</div>
+		<div>
+			{{ .Content }}
+		</div>
+	</article>
+</main>
+{{ partial "sidebar.html" . }}
+{{ end }}

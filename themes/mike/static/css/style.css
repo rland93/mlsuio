@@ -1,0 +1,131 @@
+@font-face {
+    font-family: "Archivo Narrow";
+    src: url(/archivo-narrow.ttf);
+}
+
+@font-face {
+    font-family: "Archivo Narrow";
+    src: url(/archivo-narrow-italic.ttf);
+    font-style: italic;
+}
+
+body {
+    max-width: 41em;
+    margin: 3em auto;
+    padding: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black;
+    background-color: #eeeee3;
+}
+
+.postlist * {
+    font-size: 1.1em;
+    text-decoration: none;
+}
+
+.postlist {
+    padding: 0;
+    list-style-type: none;
+}
+
+.postlist li {
+    margin-top: 1em;
+}
+
+
+nav {
+    margin-bottom: 2.3em;
+}
+
+a {
+    color: navy;
+}
+
+a:visited {
+    color: rgb(61, 56, 99)
+}
+
+a:active {
+    color: rgba(236, 123, 17, 0.863);
+}
+
+.posttitle {
+    font-family: "Archivo Narrow";
+    font-size: 2.2em;
+    margin: 0;
+}
+
+.postinfo {
+    padding: 1em;
+    text-align: right;
+}
+
+.postinfo * {
+    font-style: italic;
+}
+
+.postinfo h2 {
+    font-size: 1em;
+}
+
+.postinfotime {
+    display: inline-block;
+}
+
+.postinfotags {
+    list-style-type: none;
+    padding: 0;
+    margin: 0.5em 0 0 0;
+}
+
+.postinfotags li {
+    display: inline-block;
+    padding: 0.25em;
+    margin: 0.25em;
+    background: #ffffff;
+    border: dashed grey 1px;
+}
+
+p.author {
+    margin: 0;
+}
+
+p {
+    line-height: 160%;
+}
+
+.nounderline {
+    text-decoration: none;
+}
+
+div.subtitle {
+    font-style: italic;
+    padding-left: 3em;
+    margin-bottom: 1.4em;
+}
+
+h1.special {
+    font-family: "Archivo Narrow", sans-serif;
+    font-style: italic;
+    font-size: 3.5em;
+    color: rgb(8, 110, 141);
+    margin-bottom: 0.1em;
+    border-bottom: 3px dashed rgb(44, 41, 41);
+    text-transform: lowercase;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: "Archivo Narrow", sans-serif;
+}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}

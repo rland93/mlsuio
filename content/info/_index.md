@@ -1,5 +1,5 @@
 ---
-title: "info"
+title: "Info"
 ---
 ![Picture of Mike in the sand dunes.](img/mike_desert_med.jpg)
 

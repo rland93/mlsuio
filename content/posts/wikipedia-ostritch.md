@@ -1,9 +1,11 @@
 ---
-title: "wikipedia"
+title: 'Wikipedia Articles Written by a Single Author: Ostritches'
+author: Mike Sutherland
+date: 2022-02-05
+draft: False
+tags: ['wikipedia', 'misc']
 ---
-I love reading wikipedia articles that are written very obviously by a single person who is highly passionate about some obscure topic. You sort of just need to read one, and then you might understand why it's such an awesome thing. I'm collecting these, so if you see one shoot me an email or something.
-
-I'm going to collect them and sort of just rate them right here on this website. Or document them. I feel like someone needs to recognize the work being put in by single, sole, anonymous wikipedia people. Here is the list.
+I love reading wikipedia articles that are written very obviously by a single person who is highly passionate about some obscure topic. You only need to read one to understand why it's such an awesome thing. I'm collecting these, so if you see one shoot me an email or something. This post is part of a series about such articles.
 
 ## Ostritches
 
@@ -24,11 +26,3 @@ Following the 29 paragraphs about ostritch metabolism (at least 18 of which deal
 I really suggest also the videos on this article -- some ostritch riding and one spectacular video of a large group (flock?) stampeding down a road.
 
 I have to give this article a fantastic rating. A little heavy on thermoregulation, but otherwise, a 10/10.
-
-*MS on 2/5/22.*
-
-## Veronese Bell Ringing
-
-https://en.wikipedia.org/wiki/Veronese_bell_ringing
-
-Saved version:
