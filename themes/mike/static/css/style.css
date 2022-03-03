@@ -9,13 +9,24 @@
     font-style: italic;
 }
 
+:root {
+    --background-color: #fdfcfd;
+    --light-accent: #f5cbcc;
+    --text-color: #000102;
+    --accent1: #1f3b6d;
+    --accent1-visited: #0c4948;
+    --accent2: #592e66;
+    --accent3: #208859;
+}
+
+
 body {
     max-width: 41em;
     margin: 3em auto;
     padding: 0;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    color: black;
-    background-color: #eeeee3;
+    color: var(--text-color);
+    background-color: var(--background-color);
 }
 
 .postlist * {
@@ -38,15 +49,11 @@ nav {
 }
 
 a {
-    color: navy;
+    color: var(--accent1);
 }
 
 a:visited {
-    color: rgb(61, 56, 99)
-}
-
-a:active {
-    color: rgba(236, 123, 17, 0.863);
+    color: var(--accent1-visited);
 }
 
 .posttitle {
@@ -82,8 +89,7 @@ a:active {
     display: inline-block;
     padding: 0.25em;
     margin: 0.25em;
-    background: #ffffff;
-    border: dashed grey 1px;
+    border: dashed var(--accent2) 1px;
 }
 
 p.author {
@@ -108,9 +114,9 @@ h1.special {
     font-family: "Archivo Narrow", sans-serif;
     font-style: italic;
     font-size: 3.5em;
-    color: rgb(8, 110, 141);
+    color: var(--accent1);
     margin-bottom: 0.1em;
-    border-bottom: 3px dashed rgb(44, 41, 41);
+    border-bottom: 3px solid var(--accent3);
     text-transform: lowercase;
 }
 
