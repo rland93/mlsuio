@@ -1,0 +1,25 @@
+{{ define "main" }}
+<main>
+	<!-- {{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+		{{ range $paginator.Pages }}
+			{{ .Render "summary" }}
+		{{ end }}
+		{{ partial "pagination.html" . }} -->
+	<ul class="main-post-list">
+		<li class="main-post-item">
+			<span class="main-date">
+				<strong>Date</strong>
+			</span>
+			<span class="main-post">
+				<strong>Title</strong>
+			</span>
+		</li>
+		{{ range first 5 (where .Site.RegularPages "Type" "in" .Site.Params.mainSections) }}
+		<li class="main-post-item">
+			<span class="main-date">{{ .Date.Format (default "2006-01-02 15:04:05" .Site.Params.dateFmt) }}</span>
+			<a class="main-post" href="{{ .RelPermalink }}">{{ .Title }}</a>
+		</li>
+		{{ end }}
+	</ul>
+</main>
+{{ end }}

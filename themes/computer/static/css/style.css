@@ -1,0 +1,149 @@
+@font-face {
+    font-family: "Archivo";
+    src: url(/archivo-variable.ttf);
+}
+
+@font-face {
+    font-family: "Archivo";
+    src: url(/archivo-italic-variable.ttf);
+    font-style: italic;
+}
+
+:root {
+    --background-color: #fdfcfd;
+    --light-accent: #f5cbcc;
+    --text-color: #000102;
+    --accent1: #1f3b6d;
+    --accent1-visited: #0c4948;
+    --accent2: #592e66;
+    --accent3: #208859;
+}
+
+a {
+    color: var(--accent1);
+}
+
+a:visited {
+    color: var(--accent1-visited);
+}
+
+
+
+
+body {
+    font-family: "Archivo", sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    margin: 0;
+}
+
+
+p {
+    font-size: 1.2em;
+    line-height: 1.5em;
+}
+
+
+
+.headerc,
+main,
+footer {
+    margin-left: 2em;
+    max-width: 50em;
+}
+
+.headerc {
+    display: flex;
+    justify-content: left;
+    border-bottom: 1px solid var(--accent2);
+    margin-top: 1.5em;
+    padding-bottom: 0.5em;
+    margin-bottom: 4em;
+}
+
+.summtitle a {
+    text-decoration: none;
+}
+
+.summ {
+    margin-bottom: 4em;
+}
+
+
+
+header {
+    margin: 0;
+}
+
+
+header h1 {
+    font-weight: bold;
+    margin: 0;
+    vertical-align: bottom;
+    font-size: 1.2em;
+}
+
+header h1 a {
+    text-decoration: none;
+    color: var(--accent1);
+}
+
+.header-border {
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+nav {
+    margin: 0;
+}
+
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    vertical-align: bottom;
+}
+
+nav ul li {
+    margin: 0;
+    padding-left: 1em;
+    display: inline;
+    font-size: 1.2em;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--accent1);
+}
+
+.main-post-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    font-size: 1.2em;
+}
+
+.main-post-item {
+    display: flex;
+    justify-content: left;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.main-date {
+    width: 6em;
+    text-align: right;
+}
+
+.main-post {
+    margin-left: 1em;
+}
+
+img {
+    max-width: 100%;
+}
