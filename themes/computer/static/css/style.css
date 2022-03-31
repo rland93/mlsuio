@@ -43,6 +43,15 @@ p {
     line-height: 1.5em;
 }
 
+ul li {
+    font-size: 1.2em;
+    line-height: 1.5em;
+}
+
+pre {
+    font-size: 1.2em;
+    line-height: 1.5em;
+}
 
 
 .headerc,
@@ -75,6 +84,40 @@ header {
     margin: 0;
 }
 
+.centered {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pct30 {
+    width: 30%;
+}
+
+.pct40 {
+    width: 40%;
+}
+
+.pct50 {
+    width: 50%;
+}
+
+.pct60 {
+    width: 60%;
+}
+
+.pct70 {
+    width: 70%;
+}
+
+.pct80 {
+    width: 80%;
+}
+
+.pct90 {
+    width: 90%;
+}
+
 
 header h1 {
     font-weight: bold;
@@ -85,6 +128,10 @@ header h1 {
 
 header h1 a {
     text-decoration: none;
+    color: var(--accent1);
+}
+
+header h1 a:visited {
     color: var(--accent1);
 }
 
@@ -106,6 +153,7 @@ nav ul {
     margin: 0;
     padding: 0;
     vertical-align: bottom;
+    line-height: 1.2em;
 }
 
 nav ul li {
@@ -113,10 +161,15 @@ nav ul li {
     padding-left: 1em;
     display: inline;
     font-size: 1.2em;
+    line-height: 1.2em;
 }
 
 nav ul li a {
     text-decoration: none;
+    color: var(--accent1);
+}
+
+nav ul li a:visited {
     color: var(--accent1);
 }
 
@@ -146,4 +199,26 @@ nav ul li a {
 
 img {
     max-width: 100%;
+}
+
+footer {
+    border-top: 1px solid var(--accent2);
+    margin-top: 4em;
+}
+
+footer p a,
+footer p a:visited {
+    color: var(--accent1);
+}
+
+h1 {
+    font-size: 2.0em;
+}
+
+h2 {
+    font-size: 1.6em;
+}
+
+h3 {
+    font-size: 1.4em;
 }
