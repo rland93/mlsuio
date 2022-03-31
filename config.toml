@@ -1,7 +1,7 @@
 baseURL = "https://mlsu.io"
 languageCode = "en-us"
 title = "mslu.io"
-theme = "mike"
+theme = "computer"
 
 [taxonomies]
 category = "tags"
