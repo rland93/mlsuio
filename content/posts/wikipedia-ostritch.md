@@ -2,7 +2,7 @@
 title: 'Wikipedia Articles Written by a Single Author: Ostritches'
 author: Mike Sutherland
 date: 2022-02-05
-draft: False
+draft: True
 tags: ['wikipedia', 'misc']
 ---
 I love reading wikipedia articles that are written very obviously by a single person who is highly passionate about some obscure topic. You only need to read one to understand why it's such an awesome thing. I'm collecting these, so if you see one shoot me an email or something. This post is part of a series about such articles.
