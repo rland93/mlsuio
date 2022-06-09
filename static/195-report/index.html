@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Mike Sutherland" />
+  <title>MAE 195 Final Project S22</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">MAE 195 Final Project S22</h1>
+<p class="author">Mike Sutherland</p>
+</header>
+<h1 id="sec:parta">Part A</h1>
+<p>We have a steady state non-dimensional heat equation given by <span class="math display">\[\frac{d^2 \theta}{d\xi^2} - \beta \theta = -\beta \theta_f
+        \label{eq:ss}\]</span> Where <span class="math inline">\(\theta_f\)</span> does not depend on <span class="math inline">\(\xi\)</span>. The exact solution is a function of the parameters <span class="math inline">\(\beta\)</span> and <span class="math inline">\(\theta_f\)</span>. The solution of this equation takes the form: <span class="math display">\[\theta(\xi) = c_1 e^{\sqrt{\beta} \xi} + c_1 e^{-\sqrt{\beta} \xi} - \frac{\theta_f}{\beta}\]</span> The exact analytic solution can be found for a particular pair of boundary conditions <span class="math inline">\(\theta(\xi_1)\)</span> and <span class="math inline">\(\theta(\xi_2)\)</span> by solving the system given by: <span class="math display">\[\begin{bmatrix}
+            e^{\sqrt{\beta} \xi_1} &amp; e^{-\sqrt{\beta} \xi_1} \\
+            e^{\sqrt{\beta} \xi_2} &amp; e^{-\sqrt{\beta} \xi_2} 
+        \end{bmatrix}
+        \begin{bmatrix}
+            c_1 \\
+            c_2
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            \theta(\xi_1) \\
+            \theta(\xi_2)
+        \end{bmatrix}\]</span> For the coefficients <span class="math inline">\(c_1\)</span>, <span class="math inline">\(c_2\)</span>.</p>
+<p>We can obtain a numerical approximation of <a href="#eq:ss" data-reference-type="ref" data-reference="eq:ss">[eq:ss]</a> at a grid point <span class="math inline">\(i\)</span> by replacing the derivative term with a finite difference approximation over a grid with spacing <span class="math inline">\(h\)</span>: <span class="math display">\[\frac{d^2 \theta_i}{d\xi^2} = \frac{ \theta_{i-1} - 2 \theta_i + \theta_{i+1} }{h^2} + \mathcal{O}(h^2)
+        \label{eq:finitediff2}\]</span> Substituting <a href="#eq:finitediff2" data-reference-type="ref" data-reference="eq:finitediff2">[eq:finitediff2]</a> into <a href="#eq:ss" data-reference-type="ref" data-reference="eq:ss">[eq:ss]</a> yields: <span class="math display">\[\begin{aligned}
+        \frac{\theta_{i-1}}{h^2} + \frac{-2 \theta_i}{h^2} + 
+        \frac{\theta_{i-1}}{h^2} + \mathcal{O}(h^2) - \beta{\theta_i} 
+        &amp;= -\beta \theta_{i,f}\\
+        \left(\frac{-1}{h^2}\right) \theta_{i-1} + 
+        \left(\frac{2}{h^2} + \beta \right) \theta_{i} + 
+        \left(\frac{-1}{h^2}\right) \theta_{i+1} +
+        \mathcal{O}(h^2)
+        &amp;= \beta \theta_{i,f}
+        \label{eq:Amatrixeqn}
+    \end{aligned}\]</span> Using this equation, we can obtain a numerical approximation for each interior grid point <span class="math inline">\(i\)</span>. For a grid with step size <span class="math inline">\(h=\frac{1}{6}\)</span>, we have <span class="math inline">\(n=6\)</span> grid points, <span class="math inline">\(n=4\)</span> of which are internal grid points. We will use a zero-indexed notation for the grid points. In this case, <span class="math inline">\(\theta\)</span> is known at the endpoints, <span class="math inline">\(i=0\)</span> and <span class="math inline">\(i=5\)</span>. We can construct the matrix system <span class="math inline">\([A] \{\theta\} = \{b\}\)</span> as follows. <span class="math display">\[\begin{bmatrix}
+            1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+            -\frac{1}{h^2} &amp; \frac{2}{h^2} + \beta &amp; -\frac{1}{h^2} &amp; 0 &amp; 0 &amp; 0 \\
+            0 &amp; -\frac{1}{h^2} &amp; \frac{2}{h^2} + \beta &amp; -\frac{1}{h^2} &amp; 0 &amp; 0 \\
+            0 &amp; 0 &amp; -\frac{1}{h^2}&amp; \frac{2}{h^2} + \beta &amp; -\frac{1}{h^2} &amp; 0 \\
+            0 &amp; 0 &amp; 0 &amp; -\frac{1}{h^2} &amp; \frac{2}{h^2} + \beta &amp; -\frac{1}{h^2} \\
+            0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 
+        \end{bmatrix}
+        \begin{bmatrix}
+            \theta_0 \\
+            \theta_1 \\
+            \theta_2 \\
+            \theta_3 \\
+            \theta_4 \\
+            \theta_5
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            \theta(\xi_0) \\
+            \theta_f \\
+            \theta_f \\
+            \theta_f \\
+            \theta_f \\
+            \theta(\xi_5)  
+        \end{bmatrix}
+        \label{eq:ss_Axb}\]</span></p>
+<figure>
+<img src="figures/temp_dist_params.png" id="fig:TemperatureDistributions" alt="Temperature distributions for different parameters. The maximum physicaly possible temperature in the fin is less than or equal to the temperature of the free fluid, or the temperature of the fin at its boundary condition, whichever is less. The maximum physically possible temperature can be seen by the dashed line. The dimensionless parameter \beta \propto \frac{1}{k} represents the conductivity of the material. The dimensionless \theta_f is the uniform temperature of the free stream. We see that higher values of \beta correpond to the behavior of a less conductive fin, as we expect." /><figcaption aria-hidden="true">Temperature distributions for different parameters. The maximum physicaly possible temperature in the fin is less than or equal to the temperature of the free fluid, or the temperature of the fin at its boundary condition, whichever is less. The maximum physically possible temperature can be seen by the dashed line. The dimensionless parameter <span class="math inline">\(\beta \propto \frac{1}{k}\)</span> represents the conductivity of the material. The dimensionless <span class="math inline">\(\theta_f\)</span> is the uniform temperature of the free stream. We see that higher values of <span class="math inline">\(\beta\)</span> correpond to the behavior of a less conductive fin, as we expect.</figcaption>
+</figure>
+<p>This tridiagonal system can be solved quickly using the Thomas algorithm (TDMA) to obtain the full vector of temperatures. The solution for this system for several parameters is shown in <a href="#fig:TemperatureDistributions" data-reference-type="ref" data-reference="fig:TemperatureDistributions">1</a></p>
+<figure>
+<img src="figures/rms_error.png" id="fig:RMSError" style="width:80.0%" alt="The root mean squared error (RMSE) for a variety of grid spacings h. We can see that the approximation used in [eq:Amatrixeqn] has truncation error on the order of \mathcal{O}(h^2), as we expect." /><figcaption aria-hidden="true">The root mean squared error (RMSE) for a variety of grid spacings <span class="math inline">\(h\)</span>. We can see that the approximation used in <a href="#eq:Amatrixeqn" data-reference-type="ref" data-reference="eq:Amatrixeqn">[eq:Amatrixeqn]</a> has truncation error on the order of <span class="math inline">\(\mathcal{O}(h^2)\)</span>, as we expect.</figcaption>
+</figure>
+<p>We compare the finite difference approximation to the exact solution for various grid sizes in <a href="#fig:RMSError" data-reference-type="ref" data-reference="fig:RMSError">2</a> and verify that the error is <span class="math inline">\(\mathcal{O}(h^2)\)</span>.</p>
+<h2 id="part-5">Part 5</h2>
+<p>Consider a control volume that encloses the fin. We have two areas through which heat can pass: the fin surface, exposed to the fluid, and the fin ends, which are attached to some solid substrate. The heat flux through the fin surface occurs via convection, and the heat flux through the fin ends occurs via conduction. If we assume that no energy is generated inside of the fin, the total heat flux is given by: <span class="math display">\[Q = Q_{\text{cond}} + Q_{\text{conv}} = 0\]</span> Then, we can say that <span class="math display">\[Q_{\text{cond}} = -Q_{\text{conv}}\]</span> That is, depending on the fluid temperature, heat travels from the substrate, through the fin, and into the fluid, consistent with a cooling application. To evaluate the transfer by convection, we have that: <span class="math display">\[Q_{\text{conv}} = \int_{0}^{L} h (T-T_f) dx\]</span> Where <span class="math inline">\(h\)</span> is the coefficient of convection (not grid spacing!). We can non-dimensionalize to obtain the conduction term: <span class="math display">\[\beta \int_{0}^{1}(\theta - \theta_f) d\xi
+        \label{eq:convterm}\]</span> The convection term is modeled by Newton’s law of cooling: <span class="math display">\[k A (\left. \frac{dT}{dx} \right|_{0} - \left. \frac{dT}{dx} \right|_{L}) = 0\]</span> which can be non-dimensionalized: <span class="math display">\[\left. \frac{d\theta}{d\xi} \right|_{0} - \left. \frac{d\theta}{d\xi} \right|_{1}
+        \label{eq:condterm}\]</span> If the energy balance is to hold, we have then that convection out of the control volume (<a href="#eq:convterm" data-reference-type="ref" data-reference="eq:convterm">[eq:convterm]</a>) equals conduction into the control volume (<a href="#eq:condterm" data-reference-type="ref" data-reference="eq:condterm">[eq:condterm]</a>): <span class="math display">\[0 = \left. \frac{d\theta}{d\xi} \right|_{0} - \left. \frac{d\theta}{d\xi} \right|_{1} + \beta \int_{0}^{1}(\theta - \theta_f) d\xi\]</span> The convection term can be obtained via integration of the temperature profile. We can use the analytic solution to (<a href="#eq:ss" data-reference-type="ref" data-reference="eq:ss">[eq:ss]</a>) to obtain the temperature profile. Then, we can numerically integrate.</p>
+<figure>
+<img src="figures/heat_flux_2.png" id="fig:integration5" style="width:80.0%" alt="The error in control volume heat flux as a function of \beta for various methods of integration. The lower truncation error of the romberg methods is apparent in the plot; it is lower than that of composite trapezoid integration. However, there is a diminishing return; even though the order-6 Romberg integration is more accurate than the order-4 Romberg integration, the \mathcal{O}(h^2) error of the finite difference method used in the conduction term begins to dominate. In order to achieve a lower error for the heat flux in the control volume, we would need to use a higher-order method for the differentiation term." /><figcaption aria-hidden="true">The error in control volume heat flux as a function of <span class="math inline">\(\beta\)</span> for various methods of integration. The lower truncation error of the romberg methods is apparent in the plot; it is lower than that of composite trapezoid integration. However, there is a diminishing return; even though the order-6 Romberg integration is more accurate than the order-4 Romberg integration, the <span class="math inline">\(\mathcal{O}(h^2)\)</span> error of the finite difference method used in the conduction term begins to dominate. In order to achieve a lower error for the heat flux in the control volume, we would need to use a higher-order method for the differentiation term.</figcaption>
+</figure>
+<p>Integration to solve convection was carried out using the trapezoid rule for <span class="math inline">\(h=\frac{1}{8}\)</span>, <span class="math inline">\(h=\frac{1}{16}\)</span>, and <span class="math inline">\(h=\frac{1}{32}\)</span>. Additionally, a <span class="math inline">\(\mathcal{O}(h^4)\)</span> and <span class="math inline">\(\mathcal{O}(h^6)\)</span> romberg method was used.</p>
+<p>Meanwhile, differentiation to solve conduction was kept steady at a 2nd-order method for each boundary point.</p>
+<p>Then, a series of problems with varying <span class="math inline">\(\beta\)</span> values were solved. Because the convection term depends on <span class="math inline">\(\beta\)</span>, the accuracy of an integration methods will depend not only on <span class="math inline">\(h\)</span>, but also on <span class="math inline">\(\beta\)</span>. The results are shown in <a href="#fig:integration5" data-reference-type="ref" data-reference="fig:integration5">3</a>.</p>
+<h1 id="part-b">Part B</h1>
+<p>Now, we consider a problem where the free stream temperature is a function of its station along the fin: <span class="math inline">\(\theta_f = f(\xi)\)</span>. We consider a gaussian "plume" of high temperature in the free stream, given by the function: <span class="math display">\[f(\xi) = A \exp{\left( \frac{-(\xi - \xi_0)^2}{2 \sigma^2} \right)}\]</span> The plume has magnitude <span class="math inline">\(A\)</span>, is centered at <span class="math inline">\(\xi_0\)</span>, and has a width corresponding to <span class="math inline">\(\frac{1}{\sigma ^2}\)</span>.</p>
+<figure>
+<img src="figures/ss_spatial_variation.png" id="fig:plume" alt="Numerical solution of the \theta_f = f(\xi) fluid profile (blue) and the \theta_f = 0 fluid profile (orange). The temperature of the fluid is shown in red. On the top row, we have fluid temperature vs \xi. We can see that where the fluid is the highest temperature, the temperature of the fin commensurately rises. Bottom row shows heat flux. The heat energy passing into the fin from the plume flows through the fin towards the cold areas of the fluid, and towards the cold left boundary." /><figcaption aria-hidden="true">Numerical solution of the <span class="math inline">\(\theta_f = f(\xi)\)</span> fluid profile (blue) and the <span class="math inline">\(\theta_f = 0\)</span> fluid profile (orange). The temperature of the fluid is shown in red. On the top row, we have fluid temperature vs <span class="math inline">\(\xi\)</span>. We can see that where the fluid is the highest temperature, the temperature of the fin commensurately rises. Bottom row shows heat flux. The heat energy passing into the fin from the plume flows through the fin towards the cold areas of the fluid, and towards the cold left boundary.</figcaption>
+</figure>
+<p>Although finding the analytic solution of the <span class="math inline">\(\theta_f=f(\xi)\)</span> problem may be difficult or impossible, the numerical solution is easy: the procedure is the same regardless of the fluid temperature profile. We need only substitute the <span class="math inline">\(b\)</span> vector.</p>
+<h1 id="part-c">Part C</h1>
+<p>Now we change the conditions so that the fluid temperature is also a function of time. <span class="math display">\[\theta_f(\xi, \tau) = A \sin{\omega \tau} \exp{\left(\frac{-(\xi-\xi_0)^2}{2 \sigma ^2}\right)}
+        \label{eq:thetaf_dynamic}\]</span> This represents a fluid with a plume centered at <span class="math inline">\(\xi_0\)</span>, the temperature of which oscillates between <span class="math inline">\(A\)</span> and <span class="math inline">\(-A\)</span> in a sinusoidal fashion with a period <span class="math inline">\(\omega\)</span>.</p>
+<figure>
+<img src="figures/contour_time_rk2.png" id="fig:contour_time_rk2" style="width:90.0%" alt="Explicit Runge-Kutta solution to [eq:governing_time]. Contour plot of the temperature of the fluid and fin over time over 3 \theta_f cycles for \omega=4 (top) and \omega=400 (bottom). The Y-axis represents the non-dimensionalized time \tau, the x-axis represents the station along the fin \xi, and the color represents the temperature (red: hot, blue:cool). Left column: fluid temperature, right column: fin temperature; top row: \omega=4, bottom row: \omega=400. " /><figcaption aria-hidden="true">Explicit Runge-Kutta solution to <a href="#eq:governing_time" data-reference-type="ref" data-reference="eq:governing_time">[eq:governing_time]</a>. Contour plot of the temperature of the fluid and fin over time over 3 <span class="math inline">\(\theta_f\)</span> cycles for <span class="math inline">\(\omega=4\)</span> (top) and <span class="math inline">\(\omega=400\)</span> (bottom). The Y-axis represents the non-dimensionalized time <span class="math inline">\(\tau\)</span>, the x-axis represents the station along the fin <span class="math inline">\(\xi\)</span>, and the color represents the temperature (red: hot, blue:cool). Left column: fluid temperature, right column: fin temperature; top row: <span class="math inline">\(\omega=4\)</span>, bottom row: <span class="math inline">\(\omega=400\)</span>. </figcaption>
+</figure>
+<p>We can rewrite our governing equation. The <span class="math inline">\(\theta_{fluid \hspace{0.1cm} i,j}\)</span> term, rather than being a steady-state function only of <span class="math inline">\(\xi\)</span>, is now a function both of time and space, governed by <a href="#eq:thetaf_dynamic" data-reference-type="ref" data-reference="eq:thetaf_dynamic">[eq:thetaf_dynamic]</a>.</p>
+<h2 id="sec:explicit_time_rk2">Explicit Solution to Time-Dependent Fin Temperature</h2>
+<p><span class="math display">\[\frac{\partial \theta}{\partial \tau} = \frac{\partial^2 \theta}{\partial \xi^2} + \beta \theta_f - \beta \theta
+        \label{eq:governing_time}\]</span> We can give the RHS of this equation a similar treatment as in <a href="#sec:parta" data-reference-type="ref" data-reference="sec:parta">1</a>: <span class="math display">\[\begin{aligned}
+        \frac{\partial \theta}{\partial \tau} &amp;= \frac{\theta_{i-1} -2 \theta_i + \theta_{i-1}}{h^2}+ \beta \left(\theta_{f,i} - \theta_i \right) + \mathcal{O}(h^2) \\
+        \frac{\partial \theta}{\partial \tau} &amp;= \frac{\theta_{i-1}}{h^2} + \frac{-2 \theta_i}{h^2} + \frac{\theta_{i-1}}{h^2}+ \beta \left(\theta_{f,i} - \theta_i \right) + \mathcal{O}(h^2) \\
+        \frac{\partial \theta}{\partial \tau} &amp;= 
+        \left(\frac{1}{h^2}\right) \theta_{i-1} + 
+        \left(\frac{-2}{h^2} - \beta \right) \theta_i +
+        \left(\frac{1}{h^2}\right) \theta_{i+1} + 
+        \left(\beta\right) \theta_{f,i,j} + 
+        \mathcal{O}(h^2)
+        \label{eq:explicit_time}
+    \end{aligned}\]</span> This produces a matrix equation of the form: <span class="math display">\[\frac{\partial \theta}{\partial \tau} = -[A] \theta + b\]</span> Upon expanding the terms of this equation, we can see that they are identical to those of <a href="#sec:parta" data-reference-type="ref" data-reference="sec:parta">1</a>. In fact, when <span class="math inline">\(\frac{\partial \theta}{\partial \tau} = 0\)</span>, this equation is identical to <a href="#eq:ss_Axb" data-reference-type="ref" data-reference="eq:ss_Axb">[eq:ss_Axb]</a>. When there is no time derivative in the sytem, we are solving a steady-state equation.</p>
+<div class="adjustwidth">
+<p><span>-1cm</span><span>-1cm</span> <span class="math display">\[\frac{\partial \theta}{\partial \tau}
+            =
+            \begin{bmatrix}
+                -1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+                \frac{1}{h^2} &amp; -\frac{2}{h^2} - \beta &amp; \frac{1}{h^2} &amp; 0 &amp; 0 &amp; 0 \\
+                0&amp; \frac{1}{h^2} &amp; -\frac{2}{h^2} - \beta &amp; \frac{1}{h^2} &amp; 0 &amp; 0 \\
+                0&amp;0&amp;\frac{1}{h^2} &amp; -\frac{2}{h^2} - \beta &amp; \frac{1}{h^2} &amp; 0\\
+                0&amp;0&amp;0&amp;\frac{1}{h^2} &amp; -\frac{2}{h^2} - \beta &amp; \frac{1}{h^2} \\
+                0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; -1 
+            \end{bmatrix}
+            \begin{bmatrix}
+                \theta_{(0, j)} \\
+                \theta_{(1, j)} \\
+                \theta_{(2, j)} \\
+                \theta_{(3, j)} \\
+                \theta_{(4, j)} \\
+                \theta_{(5, j)}
+            \end{bmatrix}
+            +
+            \begin{bmatrix}
+                \theta_{(\xi=0,j)} \\
+                \beta \theta_{(f,1,j)} \\
+                \beta \theta_{(f,2,j)} \\
+                \beta \theta_{(f,3,j)} \\
+                \beta \theta_{(f,4,j)} \\
+                \theta_{(\xi=1,j)}
+            \end{bmatrix}
+            \label{eq:td_Axb}\]</span></p>
+</div>
+<figure>
+<img src="figures/explicit_runtime.png" id="fig:explicit_runtime" style="width:80.0%" alt="Runtime analysis of the explicit method. Y-axis shows runtime in seconds, and x-axis shows spatial grid size n." /><figcaption aria-hidden="true">Runtime analysis of the explicit method. Y-axis shows runtime in seconds, and x-axis shows spatial grid size <span class="math inline">\(n\)</span>.</figcaption>
+</figure>
+<p>With this formulation, we have the form <span class="math inline">\(\frac{\partial \theta}{\partial \tau} = f(\theta, \tau)\)</span>, which we can use any explicit method to solve. We have three different boundary conditions: in order to increment time, we need the first state to be a fully fixed (steady state) condition, which can be ascertained by solving <a href="#eq:ss_Axb" data-reference-type="ref" data-reference="eq:ss_Axb">[eq:ss_Axb]</a> for <span class="math inline">\(\left. \theta_f \right|_{\tau=0}\)</span>. The second and third boundary conditions are the left and right fin ends: <span class="math inline">\(i=0\)</span> and <span class="math inline">\(i=n-1\)</span>, corresponding to the fixed temperature of the sink at <span class="math inline">\(\xi=0\)</span> and <span class="math inline">\(\xi=1\)</span>. The solution is physically accurate for the step size <span class="math inline">\(t=0.49 h^2\)</span>. We can see in <a href="#fig:contour_time_rk2" data-reference-type="ref" data-reference="fig:contour_time_rk2">5</a> that the behavior of the fin follows our physical intuition: the higher frequency fluid temperature oscillation does not allow enough time for the fin to absorb the heat, and hence the fin temperature is steadier than the lower-frequency temperature oscillation.</p>
+<p>The same explicit method cannot be used to accurately solve the problem for a step size of <span class="math inline">\(t&gt;0.5 h^2\)</span>, because of stability issues in the explicit method. This can prove to be a significant obstacle in both runtime and memory, especially where the dimensionality of the problem increases, for example when a 2-D or 3-D temperature profile must be calculated.</p>
+<p>To obtain the solution shown in <a href="#fig:contour_time_rk2" data-reference-type="ref" data-reference="fig:contour_time_rk2">5</a>, 166 steps were needed for the short period <span class="math inline">\(\omega=400\)</span> case. However, 16415 timesteps were needed to compute the long-period <span class="math inline">\(\omega=4\)</span> case, because the timestep size had to be kept small. The required small timestep makes the solution quite accurate, but the runtime can be a serious obstacle.</p>
+<p>A runtime analysis of the explicit method can be found in <a href="#fig:explicit_runtime" data-reference-type="ref" data-reference="fig:explicit_runtime">6</a>. These severe stability downsides are addressed by the Crank-Nicolson method in the following section.</p>
+<h2 id="sec:implicit">"Semi-Implicit" Crank-Nicolson Solution to Time Dependent Fin Temperature</h2>
+<p>Rather than solving the governing equation explicitly, we can use the implicit Crank-Nicolson method, which alleviates the stability problems we saw in <a href="#sec:explicit_time_rk2" data-reference-type="ref" data-reference="sec:explicit_time_rk2">3.1</a>. We begin with the matrix form of our governing equation: <span class="math display">\[\frac{\partial \theta}{\partial \tau} = -[A] \theta + b\]</span> We can obtain an approximation for the equation at the next timestep by formulating the quantity <span class="math inline">\(\theta_{j+1}\)</span> with the mid-point rule, which is the combination of the forward and backward Euler methods yielding <span class="math inline">\(\mathcal{O}(h^2)\)</span> error. Because the backward Euler method has an implicit dependence on the solution at <span class="math inline">\(j+1\)</span>, solving this equation means solving a linear system <span class="math inline">\(\theta_{j+1} = B \theta_{j} + c\)</span> at each timestep. <span class="math display">\[\begin{aligned}
+        \frac{\theta_{j+1} - \theta_{j}}{t} &amp;= \frac{1}{2} \left[ \left(\frac{\partial \theta}{\partial \tau}\right)_{j} +  \left(\frac{\partial \theta}{\partial \tau}\right)_{j+1}\right] \\
+        \frac{\theta_{j+1} - \theta_{j}}{t} &amp;= \frac{1}{2} \left[ \left(-A \theta + b\right)_{j} + \left(-A \theta + b\right)_{j+1} \right] \\
+        \theta_{j+1} &amp;= \theta_{j} + \frac{t}{2} \left[ \left(-A \theta + b\right)_{j} + \left(-A \theta + b\right)_{j+1} \right] \\
+        \theta_{j+1} &amp;= \theta_{j} - \frac{t}{2} A \left( \theta_{j+1} + \theta_{j} \right) + \frac{1}{2} b \left( \theta_{j+1} + \theta_{j} \right) \\
+        \left( I + \frac{t}{2}  A \right) \theta_{j+1} &amp;= \left( I - \frac{t}{2} A \right) \theta_{j} + \frac{t}{2} \left( b_{j+1} + b_{j} \right)
+        \label{eq:cn}
+    \end{aligned}\]</span> Since <span class="math inline">\(A\)</span> is tridiagonal, the matrix <span class="math inline">\(\left( I + \frac{t}{2}  A \right)\)</span> is also tridiagonal, and hence can be solved quickly. Although the method is iterative, because the value <span class="math inline">\(\theta_{j+1}\)</span> implicitly considered, it does not suffer from the same stability issues as the explicit method. The downside is the computational cost at each timestep (inverting the matrix, rather than a simple matrix multiplication). However, because the timestep can be made much larger than explicit RK2 method, Crank-Nicolson can give us solutions to otherwise infeasible problems. The solutions in <a href="#fig:contour_time_crank" data-reference-type="ref" data-reference="fig:contour_time_crank">7</a> took only 156 timesteps to compute, both for the <span class="math inline">\(\omega=4\)</span> case and the <span class="math inline">\(\omega=400\)</span> case – significantly better than the explicit case above.</p>
+<figure>
+<img src="figures/contour_time_crank.png" id="fig:contour_time_crank" style="width:90.0%" alt="Solution to the time-dependent fin temperature problem. Y-axis shows dimensionless time \tau, while X-axis shows fin station \xi. The solution obtained from solving the problem witht the Crank-Nicolson method was as accurate as the explicit method, but the number of timesteps required was significantly smaller." /><figcaption aria-hidden="true">Solution to the time-dependent fin temperature problem. Y-axis shows dimensionless time <span class="math inline">\(\tau\)</span>, while X-axis shows fin station <span class="math inline">\(\xi\)</span>. The solution obtained from solving the problem witht the Crank-Nicolson method was as accurate as the explicit method, but the number of timesteps required was significantly smaller.</figcaption>
+</figure>
+</body>
+</html>
