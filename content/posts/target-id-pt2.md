@@ -3,7 +3,7 @@ title: 'Designing Target ID on a Aerial UAV System Part II'
 author: Mike Sutherland
 date: 2021-07-20
 draft: True
-tags: ['uav']
+tags: ['robots']
 ---
 
 We left off, in [Part I]({{<relref "target-id-pt1">}}), with some mission requirements and the idea to use deep learning for the imaging system. In order to build a ML model, though, we need data. For this, we can generate the targets synthetically.
@@ -28,7 +28,7 @@ The important flag is `-P`, which tells blender to run the script `datagen.py`. 
 
 First, we import the objects into the scene. I use a collection of shape and letter objects (14 shapes and 36 letters/numbers). The script scans for `.obj` files in a directory and imports them automatically, iterating over all letters/shapes present. That way, we generate data with every combination of shapes and letters.
 
-While we do need every letter represented in the dataset, we only use the shapes as classes (our model doesn't need ~500 classes!). Most classification tasks benefit from having many examples of each class, and with no variation in the number of examples between classes. So we 
+While we do need every letter represented in the dataset, we only use the shapes as classes (our model doesn't need ~500 classes!). Most classification tasks benefit from having many examples of each class, and little variation in the number of examples between classes. So we 
 
 ---
 

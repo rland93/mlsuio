@@ -1,13 +1,19 @@
 ---
-title: "Writing a Path Planner, Part 1: Polygons"
+title: "Random Polygons"
 date: 2021-07-15
-tags: ['uav','pathplanning']
+tags: ['robots']
 draft: False
 author: Mike Sutherland
 ---
-## Creating Non-Convex Worlds
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 
-In order to experiment with path planning strategies, we need to create environments that are "interesting" to navigate. This is a surprisingly tricky problem. We have a couple of rough goals:
+## Requirements
+
+I wanted to implement a 2-D path planner for a mobile robot. I really like testing things in software, because it's cheap. So I want to simulate 2D space.My robot sees the world as sets of connected points. We are given a bunch of lists of points. If the points in a list are "oriented" clockwise, that set defines an "outer boundary". If that set of points is "oriented" counter-clockwise, it defines an "inner boundary," a.k.a. an obstacle. 
+
+Our goal is to design an algorithm that will generate random such sets of points, in a way that corresponds to an environment which will challenge a robot path planner. So this is what we mean by "Generating Random Polygons" This is a surprisingly tricky problem. We have a couple of rough goals:
 
 + topological constraints -- each generated region has to actually be able to exist in the real world as a region. No zero-width spaces, or spaces that meet only at a single point.
 + variability by parameterization
@@ -18,7 +24,7 @@ In order to experiment with path planning strategies, we need to create environm
 
 ### Tolopological Similarity
 
-We are looking only at worlds with a specific structure. In the AUVSI competition, there is a single, closed boundary (i.e. no disjoint boundaries) with a single layer of holes. This means that our world must, at the very least, be a *[planar graph](https://en.wikipedia.org/wiki/Planar_graph)*, with no *[bridges](https://en.wikipedia.org/wiki/Bridge_(graph_theory))*. Additionally, the world we create is *[outerplanar](https://en.wikipedia.org/wiki/Outerplanar_graph)*: each input point represents an un-crossable boundary, and therefore neighbors an un-crossable outer face. We also know that the inner and outer boundaries are discrete; therefore, all of their vertices have a *[degree](https://en.wikipedia.org/wiki/Degree_(graph_theory))* exactly equal to 2. This makes intuitive sense, as the world given to us is given as an outer boundary, which is an ordered list of boundary points; and each obstacle as a list of ordered boundary points.
+We are looking only at worlds with a specific structure. In our robot's environment there is a single <sup>&dagger;&dagger;</sup> closed boundary (i.e. no disjoint boundaries) with a single layer of holes. This means that our world must, at the very least, be a *[planar graph](https://en.wikipedia.org/wiki/Planar_graph)*, with no *[bridges](https://en.wikipedia.org/wiki/Bridge_(graph_theory))*. Additionally, the world we create is *[outerplanar](https://en.wikipedia.org/wiki/Outerplanar_graph)*: each input point represents an un-crossable boundary, and therefore neighbors an un-crossable outer face. We also know that the inner and outer boundaries are discrete; therefore, all of their vertices have a *[degree](https://en.wikipedia.org/wiki/Degree_(graph_theory))* exactly equal to 2. This makes intuitive sense, as the world given to us is given as an outer boundary, which is an ordered list of boundary points; and each obstacle as a list of ordered boundary points.
 
 So, actually, we have a lot of topological constraints on the world that we're to generate.
 
@@ -154,7 +160,9 @@ Our shape, then, takes its final form:
 
 ![polygon graph](/img/path-planner/5_polygon_graph.png)
 
-Looking good!
+Looking good! This is the type of environment that might be challenging to plan through for our mobile robot. We can generate 10,000 of these, test them in software, and evaluate their performance -- without needing an expensive lab!
 
 ---
 &dagger; [Code from StackOverflow answers is MIT, right...?](/img/path-planner/comic.jpg)
+
+&dagger;&dagger; More accurate to say that we only care about a single enclosed area, since our planner won't be able to generate paths between disjoint areas
