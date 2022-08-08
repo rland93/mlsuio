@@ -1,7 +1,7 @@
 ---
 title: "Info"
 ---
-<img class="pct30 centered" src="/img/author.png">
+<img class="pct30 centered" src="/img/mike.jpg">
 
 My name is Mike Sutherland. I got a B.S. in Mechanical Engineering from the University of California, Irvine, in 2022. I created this website to show off all the cool stuff I am working on. Before attending UCI (and switching careers!), I co-owned and operated [a legal consultancy](http://ajlmedia.com) serving clients in the San Diego region. I like programming a lot, and have a particular passion for modeling complex things in computers. I also like to read & write, surf (locals only!) and play [board/video] games for fun.
 
