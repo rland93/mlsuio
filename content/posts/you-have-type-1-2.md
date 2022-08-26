@@ -34,7 +34,7 @@ I have 30 patients -- 10 adults, 10 children, and 10 adolescents. I'm going to t
 This is not bad, but not great either. See my disclaimer above.
 
 A good overview of gaussian process regression can be found in [*Gaussian Processes for Machine Learning*, by
-Carl Edward Rasmussen and Christopher K. I. Williams](https://gaussianprocess.org/gpml/chapters/) -- it's available for free online at that link. Quite math haevy. Since I already read a lot of the Rasmussen book and I haven't touched GPR for a couple years, I looked at [Quick Start to Gaussian Process Regression](https://towardsdatascience.com/quick-start-to-gaussian-process-regression-36d838810319) on Towards Data Science for a quicker `sklearn.gaussian_process` tutorial. The `gaussian_process` [api](https://scikit-learn.org/stable/modules/gaussian_process.html) is quite intuitive and easy to follow with a bit of background on GPR.
+Carl Edward Rasmussen and Christopher K. I. Williams](https://gaussianprocess.org/gpml/chapters/) -- it's available for free online at that link. Quite math heavy. Since I already read a lot of the Rasmussen book and I haven't touched GPR for a couple years, I looked at [Quick Start to Gaussian Process Regression](https://towardsdatascience.com/quick-start-to-gaussian-process-regression-36d838810319) on Towards Data Science for a quicker `sklearn.gaussian_process` tutorial. The `gaussian_process` [api](https://scikit-learn.org/stable/modules/gaussian_process.html) is quite intuitive and easy to follow with a bit of background on GPR.
 
 What we do is load the data into pandas and create the necessary objects for fitting:
 
@@ -114,7 +114,7 @@ def fitfn(arg: dict) -> None:
 
 This is really kind of ugly code, but we only need to do it once, and we only have 1500 data points.
 
-We can then use python's great `multiprocessing` module to fit all of our parameters in parallel. I'm going to do this for all 30 patients (adults, children, and adolescents) at once, just to see what my outputs are. So here, we haev a big list of `args`, which are themselves each dictionaries. For each `arg` in the list, we'll pass it into `fitfn`. Once fitfn is done, we put the column (`arg["c"]`) and the fitted model (`arg["gp"]`) into a list. That list is called `models` and when `pool.map` is done, it is full of column names `"c"`'s, and models -- the output of each `fitfn` call.
+We can then use python's great `multiprocessing` module to fit all of our parameters in parallel. I'm going to do this for all 30 patients (adults, children, and adolescents) at once, just to see what my outputs are. So here, we have a big list of `args`, which are themselves each dictionaries. For each `arg` in the list, we'll pass it into `fitfn`. Once fitfn is done, we put the column (`arg["c"]`) and the fitted model (`arg["gp"]`) into a list. That list is called `models` and when `pool.map` is done, it is full of column names `"c"`'s, and models -- the output of each `fitfn` call.
 
 ```python
 from multiprocessing import Pool
@@ -209,6 +209,27 @@ If we have more data (like the 300 patient commercial version of the simulator) 
 But, it may be enough. We'll test the actual simulation against a variety of body weights; overall, I expect insulin action to be quicker when body weight goes down. I expect correction factor (that is, the amount of insulin required to change the blood glucose) to go down as body weight goes up -- when you are heavy, it takes more insulin to change your BG. And I expect that as weight increases, we will need more basal insulin to counteract the background tendency for the BG to rise. 
 
 Lastly, IF I am totally wrong, and I should have done this very differently, and a pharmacokinetics/biostatistician wants to step in to prevent my spreading misinformation, I will update this post -- and update or abandon my approach to customizing the model. This is a game I'm making here, not an artificial pancreas, people!
+
+## UPDATE
+
+It didn't work. I think the critical mistake I made is that this actually *isn't* a gaussian process. Which is the cause for dramatic failure when I apply Gaussian Process Regression to determine these parameters.
+
+Now, I sort of knew this would happen at the outset, because this is a very finely tuned set of differential equations, and there's no indication to my mathematical mind that two separate parameters in the governing equation would be jointly gaussian. It's far more likely that each parameter interacts with the others in very specific and peculiar ways.
+
+Ways that my "inferred" parameters failed: 
+
++ Glucose would trend up and up and up, no matter how much insulin was dosed -- basal or bolus.
++ Glucose would hardly respond to insulin or carbs -- give 20u of insulin or eat 100g of carb, and the basal response dominates.
++ Glucose would have a tremendous "momentum" -- just a little bit of insulin or carb at the beginning would set it on a track to go up or down, without being able to stop it.
+
+For a couple of randomly sampled models, I was able to get something approaching a "standard" glucose response. But all of the generated models were physically impossible; nobody is taking 500u of insulin in one day.
+
+Now, I mentioned that this was an FDA-approved simulator that they use to test artificial pancreas algorithms *in-silico*. That means that these artificial patients -- my original dataset -- are not actually real people. They're actually "edge cases," that are designed to be just at the very edge of the distribution of real people with regards to these model parameters. This is because if a researcher tests an artificial pancreas (AP) model on the simulator, and it works against all of these challenging "edge cases," it is very likely to work on real people, because real people will respond in an easier way than the model does.
+
+There are specific patients in the UVA/Padova simulator that are very challenging for the AP problem -- researchers will talk about "adult#005," playing fearful. So this was not surprising at all, but it was a fun experiment nonetheless, and allowed me to brush up on a fun ML pasttime.
+
+The solution I opted for was to have the user enter their group (adult, child, adolescent) and their body weight in kg, and then just select the patient belonging to that group that is closest to them in weight. This will introduce some variability. I may revisit simply doing linear regression or something more simple to generate custom parameters later.
+
 
 ---
 &dagger; I know, I know, the x-axis is not labeled. Is this peer reviewed? Nope. Can you tell what it is if you're reading the post? Yup. Would adding labels to each x-axis make this figure really busy?? Also yup.
