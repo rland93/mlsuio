@@ -1,0 +1,27 @@
+name: Deploy Hugo Site
+
+on:
+  push:
+    branches:
+      - main  # Or your default branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: 'latest'
+    - name: Build
+      run: hugo --minify
+    - name: Deploy
+      uses: easingthemes/ssh-deploy@v2.1.5
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        ARGS: "-avzr --delete"  # rsync arguments
+        SOURCE: "./public/"  # Build directory
+        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}  # Your droplet's IP
+        REMOTE_USER: ${{ secrets.REMOTE_USER }}  # User on your droplet
+        TARGET: "/var/www/hugo_blog/public"  # Target directory on your droplet
